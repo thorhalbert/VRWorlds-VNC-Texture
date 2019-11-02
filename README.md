@@ -1,18 +1,15 @@
-# Unity-VNC-Client
+## Fork from cfloutier/Unity-VNC-Client
 
-Unity 3D Vnc Client : Port of the VncSharp: A .NET VNC Client Library 
-to Unity 3D
+# VRWorlds - VNC Client to Texture
 
-There is still some trouble with keys but as my main purpose is to integrate it into vr (without keyboard), I've let this buggy section as it.
-The original code has been simplified because there is only one mode of view (no scaling or clipped).
-All the GDI+ stuff has been removed and replaced by unity ones (Texture2D for bitmap, raycasting for mouse input...)
+The intention is to add a VRWorlds service to be able to connect to a VNC service that ultimately will be tunneled over a GRPC stream.
+This is done to maximize security, since it will expose a vnc server on a Kubernetes cluster (running some application -- terminal, visual studio code, even theoretically an RDP client such as remmina or similar to connect to a windows server).
 
-Tested using Unity 5.5 under windows
+This is one of several services that will be added to the VRWorlds browser, along with keyboards and such.   I'm starting with VNC since we already have the pieces for a remote frame-buffer system (rather than having to do my own, though ultimately this will be necessary).
 
+I will write a shim which connects to the service on the kubernetes pod and rather than exposing the VNC socket, will expose a properly secured GRPC endpoint.   Likely this will not use the existing VNC authentication, though I can probably deal with that since I have access to the whole VNC stack here in this code.
 
-Use the TestMouse scene to have a try.
-I've tested using tightVNC client under windows.
-
+My thanks to cfloutier for this effort.
 
 
 
